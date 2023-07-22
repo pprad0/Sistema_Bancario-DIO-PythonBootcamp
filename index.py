@@ -1,4 +1,5 @@
 import controllers.conta as conta
+import controllers.usuario as usuario
 
 menu = """
     ----- MENU -----
@@ -8,7 +9,8 @@ menu = """
     [1] Depositar
     [2] Sacar
     [3] Ver extrato
-    [4] Sair
+    [4] Cadastrar usuário
+    [5] Sair
         
         """
 
@@ -17,7 +19,8 @@ while True:
     escolha = input(menu)
 
     if escolha == "1":
-        conta.depositar()
+        valor = int(input(" Insira o valor do depósito:  "))
+        conta.depositar(valor)
 
     elif escolha == "2":
         conta.sacar()
@@ -26,6 +29,9 @@ while True:
         conta.ver_extrato()
 
     elif escolha == "4":
+        usuario.cadastrar_usuario()
+
+    elif escolha == "5":
         break
 
 print(
