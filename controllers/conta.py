@@ -5,8 +5,10 @@ saques_realizados = 0
 saldo = 0
 
 
-def depositar():
-    valor = int(input(" Insira o valor do depósito:  "))
+# assertar  parâmetros
+
+
+def depositar(valor):
     if float(valor) <= 0:
         return print(
             """
