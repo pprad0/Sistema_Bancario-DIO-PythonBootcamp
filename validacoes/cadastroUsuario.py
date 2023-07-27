@@ -11,7 +11,7 @@ def validar_cpf():
         return False
 
     for user in db.usuarios:
-        if cpf_formatado in user[cpf]:
+        if cpf_formatado in user["dados"]["cpf"]:
             return print("Erro: Usuário já cadastrado em nosso banco de dados.")
 
     return cpf_formatado
@@ -28,4 +28,29 @@ def dados_do_usuario(cpf):
 
     endereco = f"{logradouro}, {numero}, bairro {bairro}, {cidade}/{estado}"
 
-    return {nome, data_nascimento, endereco, cpf}
+    usuario = {
+        "nome": nome,
+        "data_nascimento": data_nascimento,
+        "endereco": endereco,
+        "cpf": cpf,
+    }
+    db.usuario_id += 1
+
+    return usuario
+
+
+def dados_conta_bancária():
+    usuario_id = input(
+        """
+    Informe o seu ID de usuário:
+    """
+    )
+
+    # errado
+    for i in db.usuarios:
+        if usuario_id in i["usuario_id"]:
+            return print(
+                "Erro: ID de usuário não consta em nosso banco de dados. Informe um ID válido ou cadastre-se."
+            )
+
+    return usuario_id

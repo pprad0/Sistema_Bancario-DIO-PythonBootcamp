@@ -8,9 +8,31 @@ def cadastrar_usuario():
         return
 
     dados = validacao.dados_do_usuario(cpf)
-    db.usuarios.append(dados)
-    print(db.usuarios)
+
+    # inserir no banco de dados
+    novo_usuario = {"usuario_id": db.usuario_id, "dados": dados}  # formatação
+    db.usuarios.append(novo_usuario)  # inserção
+
+    print(
+        f"""
+    ---------------------------------------------     
+    Usuário cadastrado com sucesso!
+     
+    Anote o ID do usuário: {db.usuario_id}
+    ---------------------------------------------
+        """
+    )
+    return
 
 
 def cadastrar_conta_bancaria():
-    print("")
+    agencia = db.AGENCIA
+
+    usuario_id = validacao.dados_conta_bancária()
+
+    db.conta_id += 1
+    conta_id = db.conta_id
+
+    nova_conta = [agencia, conta_id, usuario_id]
+    db.contas.append(nova_conta)
+    print(db.contas)

@@ -6,11 +6,12 @@ menu = """
     
     Você gostaria de:
     
-    [1] Depositar
-    [2] Sacar
-    [3] Ver extrato
-    [4] Cadastrar usuário
-    [5] Sair
+    [1] Cadastrar usuário 
+    [2] Cadastrar conta
+    [3] Depositar
+    [4] Sacar
+    [5] Ver extrato
+    [6] Sair
         
         """
 
@@ -18,20 +19,23 @@ menu = """
 while True:
     escolha = input(menu)
 
-    if escolha == "1":
+    if escolha == "1":  # cadastro usuário
+        usuario.cadastrar_usuario()
+
+    elif escolha == "2":  # cadastro conta
+        usuario.cadastrar_conta_bancaria()
+
+    elif escolha == "3":  # deposito
         valor = int(input(" Insira o valor do depósito:  "))
         conta.depositar(valor)
 
-    elif escolha == "2":
+    elif escolha == "4":  # saque
         conta.sacar()
 
-    elif escolha == "3":
-        conta.ver_extrato()
-
-    elif escolha == "4":
-        usuario.cadastrar_usuario()
-
     elif escolha == "5":
+        conta.ver_extrato()  # extrato
+
+    elif escolha == "6":  # sair
         break
 
 print(
