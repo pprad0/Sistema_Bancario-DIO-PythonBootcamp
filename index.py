@@ -26,14 +26,13 @@ while True:
         usuario.cadastrar_conta_bancaria()
 
     elif escolha == "3":  # deposito
-        valor = int(input(" Insira o valor do depósito:  "))
-        conta.depositar(valor)
+        conta.depositar()
 
     elif escolha == "4":  # saque
         conta.sacar()
 
-    elif escolha == "5":
-        conta.ver_extrato()  # extrato
+    elif escolha == "5":  # extrato
+        conta.ver_extrato()
 
     elif escolha == "6":  # sair
         break

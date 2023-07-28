@@ -7,12 +7,14 @@ def validar_cpf():
     cpf_formatado = cpf.replace(".", "").replace("-", "")
 
     if not len(cpf_formatado) == 11:
-        print("CPF inválido. O CPF deve conter 11 números, exemplo: 123.123.123-20")
+        print(
+            "<Erro>: CPF inválido. O CPF deve conter 11 números, exemplo: 123.123.123-20"
+        )
         return False
 
     for user in db.usuarios:
         if cpf_formatado in user["dados"]["cpf"]:
-            return print("Erro: Usuário já cadastrado em nosso banco de dados.")
+            return print("<Erro>: Usuário já cadastrado em nosso banco de dados.")
 
     return cpf_formatado
 
@@ -40,17 +42,20 @@ def dados_do_usuario(cpf):
 
 
 def dados_conta_bancária():
-    usuario_id = input(
-        """
-    Informe o seu ID de usuário:
-    """
-    )
+    usuario_id = input("Informe o seu ID de usuário: ")
 
-    # errado
+    if usuario_id is None:
+        return print("<Erro>: ID de usuário não pode ser vazio.")
+
+    usuario_id = int(usuario_id)
+
+    usuario_existe = False
     for i in db.usuarios:
-        if usuario_id in i["usuario_id"]:
-            return print(
-                "Erro: ID de usuário não consta em nosso banco de dados. Informe um ID válido ou cadastre-se."
-            )
+        if usuario_id == i["usuario_id"]:
+            usuario_existe = True
+            break
+
+    if not usuario_existe:
+        return print("<Erro>: Informe outro ID de usuário, o informado não existe.")
 
     return usuario_id

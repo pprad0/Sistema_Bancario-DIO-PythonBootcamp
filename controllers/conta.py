@@ -8,12 +8,13 @@ saldo = 0
 # assertar  parâmetros
 
 
-def depositar(valor):
+def depositar():
+    valor = int(input(" Insira o valor do depósito:  "))
     if float(valor) <= 0:
         return print(
             """
               
-              Falha no processo, o valor precisa ser maior que zero.
+              <Erro>: O valor precisa ser maior que zero.
               
               """
         )
@@ -54,14 +55,14 @@ def sacar():
         else:
             print(
                 """
-                Saldo insuficiente ou valor limite de saque alcançado.
+                <Erro>: Saldo insuficiente ou valor limite de saque alcançado.
                 """
             )
 
     else:
         print(
             """ 
-              Limite diário de saques alcançado, volte amanhã.
+              <Erro>: Limite diário de saques alcançado, volte amanhã.
               """
         )
 

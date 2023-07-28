@@ -26,13 +26,14 @@ def cadastrar_usuario():
 
 
 def cadastrar_conta_bancaria():
-    agencia = db.AGENCIA
-
     usuario_id = validacao.dados_conta_bancária()
 
-    db.conta_id += 1
-    conta_id = db.conta_id
+    if usuario_id:
+        agencia = db.AGENCIA
+        db.conta_id += 1
+        conta_id = db.conta_id
 
-    nova_conta = [agencia, conta_id, usuario_id]
-    db.contas.append(nova_conta)
-    print(db.contas)
+        nova_conta = [agencia, conta_id, usuario_id]
+        db.contas.append(nova_conta)
+
+    return
